@@ -1,86 +1,88 @@
+let playerScore = 0;
+let computerScore = 0;
 
-// Function to get choice for Computer
-function getComputerChoice() {
-    value = Math.floor(Math.random() * 3);
-    if (value === 0) {
-        return "Rock"
-    } else if (value === 1) {
-        return "Paper"
-    } else { return "Scissor" }
-}
+const choices = document.querySelectorAll('#rpc');
+const results = document.querySelector('.results');
+const restart = document.querySelector('#restart');
+const score = document.querySelector('.score');
+gameStart();
+scoreUpdate();
 
-
-// Function to make the input Capitalize
-function capitalize(string) {
-    return (
-        string.toLowerCase().charAt(0).toUpperCase() + string.toLowerCase().slice(1)
-    );
-}
-
-// Function to do valid comparision
-function playRound(playerSelection, computerSelection) {
-    let log = ""
-
-    if (playerSelection === "Rock") {
-        if (computerSelection === "Scissor") {
-            log = "You Win, Rock beats Scissor"
-        } else if (computerSelection === "Paper") {
-            log = "You Lose, Paper beats Rock"
-        } else {
-            log = "It's tie "
-        }
-
-    } else if (playerSelection === "Paper") {
-        if (computerSelection === "Scissor") {
-            log = "You Lose, Scissor beats Paper"
-        } else if (computerSelection === "Rock") {
-            log = "You Win, Paper beats Rock"
-        } else {
-            log = "It's tie"
-        }
-
-    }
-    else if (playerSelection === "Scissor") {
-        if (computerSelection === "Rock") {
-            log = "You Lose, Rock beats Scissor"
-        } else if (computerSelection === "Paper") {
-            log = "You Win, Scissor beats Paper"
-        } else {
-            log = "It's tie"
-        }
-    }
-    return log;
-}
-
-var playerScore = 0;
-var computerScore = 0;
-
-// Function to get the score
-function game(playerSelect) {
-        let playerSelection = capitalize(playerSelect);
-        let computerSelection = getComputerChoice();
-
-        let roundResult = playRound(playerSelection, computerSelection);
-        if (roundResult.search('You Win,') > -1) {
-            playerScore++;
-        } else if (roundResult.search('You Lose,') > -1) {
-            computerScore++;
-        }
-}
-
-// Function which loop 5 times 
-function FinalGame(){
-    for (let i= 1; i <= 5; i++){
-        playerSelect = prompt("Type: Rock, Paper or Scissor")
-        game(playerSelect)
-    }
-    
-    if (playerScore > computerScore) {
-        return ("Game Over. You Win!");
+function computerPlay() {
+    let choice = Math.floor(Math.random() * (3) + 1);
+    if (choice === 1) {
+        return "rock";
+    } else if (choice === 2) {
+        return "paper";
     } else {
-        return ("Game Over. You Lose");
-    }    
+        return "scissors";
+    }
 }
 
-console.log(FinalGame())
+function rpc(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection === "rock" && computerSelection === "paper") {
+        results.textContent = `You lost! ${computerSelection} beats ${playerSelection}!`;
+        ++computerScore;
+        scoreUpdate();
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        results.textContent = `You lost! ${computerSelection} beats ${playerSelection}!`;
+        ++computerScore;
+        scoreUpdate();
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        results.textContent = `You lost! ${computerSelection} beats ${playerSelection}!`;
+        ++computerScore;
+        scoreUpdate();
+    } else if (playerSelection === computerSelection) {
+        results.textContent = `It's a draw! ${computerSelection} can't beat ${playerSelection}!`;
+    } else {
+        results.textContent = `You won! ${playerSelection} beats ${computerSelection}`;
+        ++playerScore;
+        scoreUpdate();
+    }
+}
 
+function gameStart() {
+    playerScore = 0;
+    computerScore = 0;
+    choices.forEach(choice => {
+        choice.disabled = false;
+    });
+    restart.style.visibility = 'hidden';
+    restart.disabled = true;
+    results.textContent = "";
+    score.textContent = `${playerScore} - ${computerScore}`;
+}
+
+function gameEnd() {
+    choices.forEach(choice => {
+        choice.disabled = true;
+    });
+    restart.style.visibility = 'visible';
+    restart.disabled = false;
+}
+
+function scoreUpdate() {
+    if (playerScore == 5) {
+        score.textContent = "You've won!!";
+        gameEnd();
+    } else if (computerScore == 5) {
+        score.textContent = "You've Lost!!"
+        gameEnd();
+    } else {
+        score.textContent = `${playerScore} - ${computerScore}`;
+    }
+}
+
+function playRound(playerSelection) {
+    let computerSelection = computerPlay();
+    rpc(playerSelection, computerSelection)
+}
+
+choices.forEach(choice => {
+    choice.addEventListener('click', () => {
+        playRound(choice.textContent);
+    })
+});
+
+restart.addEventListener('click', gameStart);
