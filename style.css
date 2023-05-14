@@ -6,10 +6,11 @@ body {
     padding: 0;
     width: 100vw;
     height: 100vh;
+    margin-bottom: 40px; !important
   }
 
 h1{
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 600;
     text-align: center;
     padding: 40px;
@@ -17,7 +18,9 @@ h1{
     margin: 0;
   }
 .win-para{
-    font-size: 25px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 300;
   }
 .container{
     width: 100vw;
@@ -43,12 +46,10 @@ h1{
     flex-direction: row;
     justify-content: center;
     gap: 100px;
-    margin-bottom: 10px;
 }
 .player-score, .computer-score{
     font-weight: 300;
     font-size: 30px;
-    margin: 0;
 }
 
 .result{
@@ -68,7 +69,6 @@ h1{
   padding: 13px 23px;
   width: auto;
   margin-top: 0;
-  margin-bottom: 100px;
 }
 .playAgain:hover{
     background-color: rgb(168, 163, 163);

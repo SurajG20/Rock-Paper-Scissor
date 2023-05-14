@@ -63,14 +63,18 @@ function playRound() {
 
         if (playerChoice === "rock" && computerChoice === "paper") {
             res = `You lost! ${computerChoice} beats ${playerChoice}!`;
+            computerScore += 1;
         } else if (playerChoice === "paper" && computerChoice === "scissors") {
             res = `You lost! ${computerChoice} beats ${playerChoice}!`;
+            computerScore += 1;
         } else if (playerChoice === "scissors" && computerChoice === "rock") {
             res = `You lost! ${computerChoice} beats ${playerChoice}!`;
+            computerScore += 1;
         } else if (playerChoice === computerChoice) {
             res = `It's a draw! ${computerChoice} can't beat ${playerChoice}!`;
         } else {
             res = `You won! ${playerChoice} beats ${computerChoice}`;
+            playerScore += 1;
         }
     results.textContent = `Result: ${res}`;
     results.classList.add("result");
