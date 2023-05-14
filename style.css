@@ -1,0 +1,75 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: lightskyblue;
+    padding: 0;
+  }
+
+h1{
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+    padding: 40px;
+    padding-bottom: 0;
+    margin: 0;
+  }
+.win-para{
+    font-size: 25px;
+  }
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button-container {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    padding: 40px;
+    max-width: 90%;
+}  
+.button-container img {
+    max-width: 150px;
+    padding: 30px;
+    background:transparent;
+}
+.score-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+    gap: 100px;
+}
+.player-score, .computer-score{
+    font-weight: 300;
+    font-size: 30px;
+    margin: 0;
+}
+
+
+.result{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.playAgain {
+    background-color: lightblue;
+  border: 1px solid #222222;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #4b4343;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+  padding: 13px 23px;
+  text-decoration: none;
+  width: auto;
+  margin-bottom: 50px;
+}
