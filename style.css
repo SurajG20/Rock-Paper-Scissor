@@ -4,6 +4,8 @@ body {
     margin: 0;
     background-color: lightskyblue;
     padding: 0;
+    width: 100vw;
+    height: 100vh;
   }
 
 h1{
@@ -40,9 +42,8 @@ h1{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
-    height: 80%;
     gap: 100px;
+    margin-bottom: 10px;
 }
 .player-score, .computer-score{
     font-weight: 300;
@@ -50,26 +51,26 @@ h1{
     margin: 0;
 }
 
-
 .result{
     text-align: center;
-    font-size: 30px;
-    font-weight: 400;
-    margin-bottom: 50px;
+    font-size: 25px;
 }
 
 .playAgain {
     background-color: lightblue;
   border: 1px solid #222222;
   border-radius: 10px;
-  box-sizing: border-box;
-  color: #4b4343;
+  color: #070707;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   outline: none;
   padding: 13px 23px;
-  text-decoration: none;
   width: auto;
-  margin-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 100px;
+}
+.playAgain:hover{
+    background-color: rgb(168, 163, 163);
+    color: lightskyblue;
 }
